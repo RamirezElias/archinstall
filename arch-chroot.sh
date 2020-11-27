@@ -15,29 +15,30 @@ locale-gen
 
 
 echo Please, Enter a hostname
-read $Homename
-echo $Hostname >> /etc/hostname
+read -p 'hostname: ' HostNamevar
+echo $Hostnamevar >> /etc/hostname
 
 echo 127.0.0.1   localhost '\n' ::1 '\n' localhost 127.0.1.1    dev.localdomain    dev >> /etc/hosts
 
 ###################################### Put your own password for the root user here
 echo Please, Enter a Root Password
-read $RootPassword
-echo root:$RootPassword | chpasswd
+read -sp 'Password: ' RootPasswordvar
+echo root:$RootPasswordvar | chpasswd
 ##################################################################################
 
 # Change the user name dev to your own username 
 echo Please, Enter a UserName
-read $UserName
-echo Please, Enter a Password for $UserName
-read $UserPassword
-useradd -m $UserName
+read -p 'Username: ' UserNamevar
+echo Please, Enter a Password for $UserNamevar
+
+read -sp 'Password: ' UserPasswordvar
+useradd -m $UserNamevar
 
 # make sure to change the username to your username and password here from above.#######
-echo $UserName:$UserPassword | chpasswd
+echo $UserNamevar:$UserPasswordvar | chpasswd
 ##############################################################################
 
-usermod -aG wheel,audio,video,optical,storage $UserName
+usermod -aG wheel,audio,video,optical,storage $UserNamevar
 #Change dev to your username
 
 pacman -S --needed --noconfirm os-prober sudo
