@@ -6,13 +6,13 @@ pacman -S --needed i3-gaps i3blocks i3lock i3status
 
 pacman -S --needed firefox thunar konsole vim  xorg-server xorg-xinit xorg fakeroot bluefish gparted Network-Manager nitrogen sudo efibootmgr make grub
 
-#echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
+echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
 
-#locale-gen
+locale-gen
 
-#ln -sf /usr/share/zoneinfo/America/Los_Angles /etc/localtime
+ln -sf /usr/share/zoneinfo/America/Los_Angles /etc/localtime
 
-#hwclock --systohc
+hwclock --systohc
 
 # change the dev to whatever hostname you want
 echo dev > /etc/hostname
@@ -31,7 +31,8 @@ useradd -m dev
 echo dev:password | chpasswd
 ##############################################################################
 
-usermod -aG wheel,audio,video,optical,storage dev  #Change dev to your username
+usermod -aG wheel,audio,video,optical,storage dev  
+#Change dev to your username
 
 pacman -S --needed grub os-prober sudo
 
@@ -53,5 +54,3 @@ systemctl enable NetworkManager
 
 
 grub-mkconfig -o /boot/grub/grub.cfg
-
-exit
