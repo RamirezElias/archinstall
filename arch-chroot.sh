@@ -1,10 +1,11 @@
 #!/bin/bash
 
 
-pacman -S --needed i3-gaps i3blocks i3lock i3status
+pacman -S  i3-gaps i3blocks i3lock i3status nano
 
 
-pacman -S --needed firefox thunar konsole vim  xorg-server xorg-xinit xorg fakeroot bluefish gparted Network-Manager nitrogen sudo efibootmgr make grub nano
+pacman -S  firefox thunar konsole xorg-server xorg-xinit xorg 
+pacman -S  fakeroot bluefish gparted nitrogen sudo efibootmgr make grub
 
 nano /etc/locale.gen
 
@@ -15,7 +16,7 @@ ln -sf /usr/share/zoneinfo/America/Los_Angles /etc/localtime
 hwclock --systohc
 
 # change the dev to whatever hostname you want
-echo dev > /etc/hostname
+echo dev >> /etc/hostname
 
 echo 127.0.0.1   localhost '\n' ::1 '\n' localhost 127.0.1.1    dev.localdomain    dev >> /etc/hosts
 
