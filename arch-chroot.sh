@@ -6,7 +6,7 @@ pacman -S --needed i3-gaps i3blocks i3lock i3status
 
 pacman -S --needed firefox thunar konsole vim  xorg-server xorg-xinit xorg fakeroot bluefish gparted Network-Manager nitrogen sudo efibootmgr make grub
 
-echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
+nano /etc/locale.gen
 
 locale-gen
 
