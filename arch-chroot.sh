@@ -14,21 +14,24 @@ ln -sf /usr/share/zoneinfo/America/Los_Angles /etc/localtime
 
 hwclock --systohc
 
+# change the dev to whatever hostname you want
 echo dev > /etc/hostname
 
 echo 127.0.0.1   localhost '\n' ::1 '\n' localhost 127.0.1.1    dev.localdomain    dev >> /etc/hosts
 
 systemctl enable dhcpcd
-
+###################################### Put your own password for the root user here
 echo root:password | chpasswd
+##################################################################################
 
-
-
+# Change the user name dev to your own username 
 useradd -m dev
 
+# make sure to change the username to your username and password here from above.#######
 echo dev:password | chpasswd
+##############################################################################
 
-usermod -aG wheel,audio,video,optical,storage dev
+usermod -aG wheel,audio,video,optical,storage dev  #Change dev to your username
 
 pacman -S --needed grub os-prober sudo
 
