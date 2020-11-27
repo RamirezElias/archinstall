@@ -7,33 +7,37 @@ pacman -S --needed --noconfirm i3-gaps i3blocks i3lock i3status nano
 
 
 pacman -S  --needed --noconfirm firefox thunar konsole xorg-server xorg-xinit xorg 
-yes | pacman -S  --noconfirm --needed fakeroot bluefish gparted nitrogen sudo efibootmgr make grub
+pacman -S  --noconfirm --needed fakeroot bluefish gparted nitrogen sudo efibootmgr make grub
 
 sed -i 's|#en_US.UTF-8 UTF-8|en_US.UTF-8 UTF-8|' /etc/locale.gen
 
 locale-gen
 
 
-
-
-
-# change the dev to whatever hostname you want
-echo dev >> /etc/hostname
+echo Please, Enter a hostname
+read $Homename
+echo $Hostname >> /etc/hostname
 
 echo 127.0.0.1   localhost '\n' ::1 '\n' localhost 127.0.1.1    dev.localdomain    dev >> /etc/hosts
 
 ###################################### Put your own password for the root user here
-echo root:password | chpasswd
+echo Please, Enter a Root Password
+read $RootPassword
+echo root:$RootPassword | chpasswd
 ##################################################################################
 
 # Change the user name dev to your own username 
-useradd -m dev
+echo Please, Enter a UserName
+read $UserName
+echo Please, Enter a Password for $UserName
+read $UserPassword
+useradd -m $UserName
 
 # make sure to change the username to your username and password here from above.#######
-echo dev:password | chpasswd
+echo $UserName:$UserPassword | chpasswd
 ##############################################################################
 
-usermod -aG wheel,audio,video,optical,storage dev  
+usermod -aG wheel,audio,video,optical,storage $UserName
 #Change dev to your username
 
 pacman -S --needed --noconfirm os-prober sudo
