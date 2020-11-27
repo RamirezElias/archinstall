@@ -1,6 +1,6 @@
 #!/bin/bash
 
-fdsik /dev/sda
+fdisk /dev/sda
 
 mkfs.vfat -F 32 /dev/sda1
 mkfs.ext4 /dev/sda2
