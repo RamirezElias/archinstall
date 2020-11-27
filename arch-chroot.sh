@@ -51,5 +51,5 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 pacman -S networkmanager
 
- systemctl enable networkmanager
+ systemctl enable NetworkManager
 
