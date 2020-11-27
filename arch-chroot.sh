@@ -9,7 +9,7 @@ pacman -S --needed i3-gaps i3blocks i3lock i3status nano
 pacman -S  --needed firefox thunar konsole xorg-server xorg-xinit xorg 
 pacman -S  --needed fakeroot bluefish gparted nitrogen sudo efibootmgr make grub
 
-nano /etc/locale.gen
+sed -i 's|#en_US.UTF-8 UTF-8|en_US.UTF-8 UTF-8|' /etc/locale.gen
 
 locale-gen
 
@@ -51,7 +51,20 @@ grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 
 grub-mkconfig -o /boot/grub/grub.cfg
 
-pacman -S networkmanager
+pacman -S networkmanager-applet
+
+echo exec i3 '\n' >> /etc/X11/xinit/xinitrc
+sed -i 's|twm &|#twm &|' /etc/X11/xinit/xinitrc
+sed -i 's|xclock|#xclock|' /etc/X11/xinit/xinitrc
+sed -i 's|exec xterm|#exec xterm|' /etc/X11/xinit/xinitrc
+sed -i 's|xterm|#xterm|g' /etc/X11/xinit/xinitrc
+
+# sudo pacman -S nvidia nvidia-utils    # NVIDIA
+# sudo pacman -S xf86-video-amdgpu mesa   # AMD
+# sudo pacman -S xf86-video-intel mesa    # Intel
+pacman -S lightdm lightdm-gtk-greeter
+systemctl enable lightdm
+
 
  systemctl enable NetworkManager
 
