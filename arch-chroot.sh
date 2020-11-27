@@ -1,11 +1,11 @@
 #!/bin/bash
 
 
-pacman -S  i3-gaps i3blocks i3lock i3status nano
+pacman -S --needed i3-gaps i3blocks i3lock i3status nano
 
 
-pacman -S  firefox thunar konsole xorg-server xorg-xinit xorg 
-pacman -S  fakeroot bluefish gparted nitrogen sudo efibootmgr make grub
+pacman -S  --needed firefox thunar konsole xorg-server xorg-xinit xorg 
+pacman -S  --needed fakeroot bluefish gparted nitrogen sudo efibootmgr make grub
 
 nano /etc/locale.gen
 
@@ -39,9 +39,9 @@ pacman -S --needed grub os-prober sudo
 
 #EDITOR=nano visudo
 EDITOR=nano visudo
+pacman -S --needed grub efibootmgr dosfstools os-prober mtools
 
-mkdir /boot/EFI
-
+ mkdir /boot/EFI
 
 mount /dev/sda1 /boot/EFI/
 
@@ -49,9 +49,7 @@ grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 
 grub-mkconfig -o /boot/grub/grub.cfg
 
-pacman -S --needed network-manager-applet
+pacman -S networkmanager
 
-systemctl enable NetworkManager
+ systemctl enable NetworkManager
 
-
-grub-mkconfig -o /boot/grub/grub.cfg
