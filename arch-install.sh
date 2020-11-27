@@ -1,4 +1,5 @@
 #!/bin/bash
+timedatectl set-ntp true
 
 fdisk /dev/sda
 
@@ -9,9 +10,11 @@ mount /dev/sda2 /mnt/
 
 mv arch-chroot.sh /mnt/
 
-pacstrap -i /mnt/ base base-devel
+pacstrap /mnt base linux linux-firmware
 
-genfstab -U -p /mnt >> /mnt/etc/fstab
+
+genfstab -U /mnt >> /mnt/etc/fstab
+
 
 
 arch-chroot /mnt/
