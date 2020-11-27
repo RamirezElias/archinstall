@@ -51,7 +51,7 @@ grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 
 grub-mkconfig -o /boot/grub/grub.cfg
 
-pacman -S networkmanager-applet
+pacman -S networkmanager
 
 echo exec i3 '\n' >> /etc/X11/xinit/xinitrc
 sed -i 's|twm &|#twm &|' /etc/X11/xinit/xinitrc
