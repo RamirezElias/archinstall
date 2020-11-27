@@ -1,5 +1,7 @@
 #!/bin/bash
+ln -sf /usr/share/zoneinfo/America/Los_Angles /etc/localtime
 
+hwclock --systohc
 
 pacman -S --needed i3-gaps i3blocks i3lock i3status nano
 
@@ -11,9 +13,9 @@ nano /etc/locale.gen
 
 locale-gen
 
-ln -sf /usr/share/zoneinfo/America/Los_Angles /etc/localtime
 
-hwclock --systohc
+
+
 
 # change the dev to whatever hostname you want
 echo dev >> /etc/hostname
