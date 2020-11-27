@@ -16,7 +16,7 @@ locale-gen
 
 echo Please, Enter a hostname
 read -p 'hostname: ' HostNamevar
-echo $Hostnamevar >> /etc/hostname
+echo $HostNamevar >> /etc/hostname
 
 echo 127.0.0.1   localhost '\n' ::1 '\n' localhost 127.0.1.1    dev.localdomain    dev >> /etc/hosts
 
