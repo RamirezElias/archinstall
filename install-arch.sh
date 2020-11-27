@@ -1,24 +1,21 @@
 #!/bin/bash
 
 
-sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${TGTDEV}
-  g # make partion table GPT
-  n # new partition
-  p # primary partition
-  1 # partition number 1
-    # default - start at beginning of disk
-  +550M # 100 MB boot parttion
-  n # new partition
-  p # primary partition
-  2 # partion number 2
-    # default, start immediately after preceding partition
-    # default, extend partition to end of disk
-  t # make a partition bootable
-  1 # bootable partition is partition 1 -- /dev/sda1
-  p # print the in-memory partition table
-  w # write the partition table
-  q # and we're done
-EOF
+$ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS  | sudo fdisk /dev/sda
+g      # create new GPT partition
+n      # add new partition
+1      # partition number
+       # default - first sector
++550MiB # partition size
+n      # add new partition
+2      # partition number
+       # default - first sector
+       # default - last sector
+t      # change partition type
+1      # partition number
+1     # Linux filesystem
+w      # write partition table and exit
+FDISK_CMDS
 mkfs.vfat -F 32 /dev/sda1
 mkfs.ext4 /dev/sda2
 
