@@ -7,7 +7,7 @@ pacman -S --needed --noconfirm i3-gaps i3blocks i3lock i3status nano
 
 
 pacman -S  --needed --noconfirm firefox thunar konsole xorg-server xorg-xinit xorg 
-pacman -S  --noconfirm --needed fakeroot bluefish gparted nitrogen sudo efibootmgr make grub
+pacman -S   --needed --noconfirm fakeroot bluefish gparted nitrogen sudo efibootmgr make grub
 
 sed -i 's|#en_US.UTF-8 UTF-8|en_US.UTF-8 UTF-8|' /etc/locale.gen
 
@@ -66,7 +66,7 @@ sed -i 's|xterm|#xterm|g' /etc/X11/xinit/xinitrc
 # pacman -S --noconfirm nvidia nvidia-utils    # NVIDIA
 # pacman -S --noconfirm xf86-video-amdgpu mesa   # AMD
 # pacman -S --noconfirm xf86-video-intel mesa    # Intel
-pacman -S --noconfirm lightdm lightdm-gtk-greeter
+pacman -S --needed --noconfirm lightdm lightdm-gtk-greeter
 systemctl enable lightdm
 
 
