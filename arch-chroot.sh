@@ -6,13 +6,13 @@ pacman -S --needed i3-gaps i3blocks i3lock i3status
 
 pacman -S --needed firefox thunar konsole vim  xorg-server xorg-xinit xorg fakeroot bluefish gparted Network-Manager nitrogen sudo efibootmgr make grub
 
-echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
+#echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
 
-locale-gen
+#locale-gen
 
-ln -sf /usr/share/zoneinfo/America/Los_Angles /etc/localtime
+#ln -sf /usr/share/zoneinfo/America/Los_Angles /etc/localtime
 
-hwclock --systohc
+#hwclock --systohc
 
 # change the dev to whatever hostname you want
 echo dev > /etc/hostname
@@ -41,7 +41,7 @@ EDITOR=nano visudo
 mkdir /boot/EFI
 
 
-mount /dev/sda /boot/EFI/
+mount /dev/sda1 /boot/EFI/
 
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 
@@ -54,4 +54,4 @@ systemctl enable NetworkManager
 
 grub-mkconfig -o /boot/grub/grub.cfg
 
-reboot
+exit
