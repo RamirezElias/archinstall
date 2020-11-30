@@ -1,7 +1,13 @@
 #!/bin/bash
 timedatectl set-ntp true
+fdisk -l
 
-fdisk /dev/sda << EOF
+echo Select which hard to install arch i3 on.
+echo Example: sda
+
+read -p '/dev/' hardDrivevar
+
+fdisk /dev/$hardDrivevar << EOF
 g
 n
 1
