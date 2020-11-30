@@ -62,11 +62,12 @@ sed -i 's|twm &|#twm &|' /etc/X11/xinit/xinitrc
 sed -i 's|xclock|#xclock|' /etc/X11/xinit/xinitrc
 sed -i 's|exec xterm|#exec xterm|' /etc/X11/xinit/xinitrc
 sed -i 's|xterm|#xterm|g' /etc/X11/xinit/xinitrc
+sed -i 's|bindsym $mod+d exec --no-startup-id i3-dmenu-desktop|#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop|' .config/i3/config
 
 # pacman -S --noconfirm nvidia nvidia-utils    # NVIDIA
 # pacman -S --noconfirm xf86-video-amdgpu mesa   # AMD
 # pacman -S --noconfirm xf86-video-intel mesa    # Intel
-pacman -S --needed --noconfirm lightdm lightdm-gtk-greeter
+pacman -S --needed --noconfirm lightdm lightdm-gtk-greeter dmenu
 systemctl enable lightdm
 
 
